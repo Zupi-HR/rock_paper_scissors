@@ -15,7 +15,7 @@ function computerPlay() {
     return computerChoice;
 }
 
-const playerSelection = "Rock";
+const playerSelection = prompt("Your turn:");
 const computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
@@ -23,7 +23,7 @@ function playRound(playerSelection, computerSelection) {
         return `You win!, Rock beats Scissors`;
     } else if ((playerSelection.toLowerCase() === "paper") && (computerSelection.toLowerCase() === "rock")) {
         return `You win! Paper beats Rock`;
-    } else if ((playerSelection.toLowerCase() === "scissors") && (computerSelection.to() === "paper")) {
+    } else if ((playerSelection.toLowerCase() === "scissors") && (computerSelection.toLowerCase() === "paper")) {
         return `You win! Scissors beats Paper`;
     } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
         return `It's a draw! ${playerSelection} and ${computerSelection} are same`;
@@ -31,7 +31,13 @@ function playRound(playerSelection, computerSelection) {
         return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 
-
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (i = 0; i < 5; i++) {  
+        const game = playRound(playerSelection, computerSelection);
+        console.log(game);
+    }
+}
+
+game();
