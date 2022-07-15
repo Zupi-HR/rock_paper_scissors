@@ -15,7 +15,7 @@ function computerPlay() {
     return computerChoice;
 }
 
-const playerSelection = prompt("Your turn:");
+let playerSelection;
 let computerSelection;
 
 let playerScore = 0;
@@ -42,6 +42,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     for (i = 0; i < 5; i++) {
+        playerSelection = prompt("Your turn:");
         computerSelection = computerPlay();
         const game = playRound(playerSelection, computerSelection);
         console.log(game);
