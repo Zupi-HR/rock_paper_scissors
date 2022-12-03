@@ -1,3 +1,46 @@
+const container = document.querySelector('.container');
+const btnRock = document.querySelector('.btn-rock');
+const btnPaper = document.querySelector('.btn-paper');
+const btnScissors = document.querySelector('.btn-scissors');
+const buttons = document.querySelectorAll('button');
+
+
+btnRock.addEventListener('click', function () {
+    let computerChoice = computerPlay();
+    const result = playRound("rock", computerChoice);
+    const div = document.createElement('div');
+    div.textContent = result;
+    container.appendChild(div);
+
+    const gameDiv = document.createElement('div');
+    gameDiv.textContent = game();
+    container.appendChild(gameDiv);
+})
+
+btnPaper.addEventListener('click', function () {
+    let computerChoice = computerPlay();
+    const result = playRound('paper', computerChoice);
+    const div = document.createElement('div');
+    div.textContent = result;
+    container.appendChild(div);
+
+    const gameDiv = document.createElement('div');
+    gameDiv.textContent = game();
+    container.appendChild(gameDiv);
+})
+
+btnScissors.addEventListener('click', function () {
+    let computerChoice = computerPlay();
+    const result = playRound('scissors', computerChoice);
+    const div = document.createElement('div');
+    div.textContent = result;
+    container.appendChild(div);
+
+    const gameDiv = document.createElement('div');
+    gameDiv.textContent = game();
+    container.appendChild(gameDiv);
+})
+
 function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3);
     let computerChoice;
@@ -21,6 +64,8 @@ let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
+
+
 function playRound(playerSelection, computerSelection) {
     if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "scissors")) {
         playerScore++;
@@ -41,19 +86,15 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (i = 0; i < 5; i++) {
-        playerSelection = prompt("Your turn:");
-        computerSelection = computerPlay();
-        const game = playRound(playerSelection, computerSelection);
-        console.log(game);
-    }
+
     if (playerScore > computerScore) {
-        console.log(`Your score is: ${playerScore}, computer score is: ${computerScore}, so you win!`)
+        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so you win!`
     } else if (computerScore > playerScore) {
-        console.log(`Your score is: ${playerScore}, computer score is: ${computerScore}, so computer win!`);
+        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so computer win!`;
     } else {
-        console.log(`Your score is: ${playerScore}, computer score is: ${computerScore}, so it's a draw!`);
+        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so it's a draw!`;
     }
 }
 
-game();
+
+
