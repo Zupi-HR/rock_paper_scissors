@@ -4,6 +4,9 @@ const btnPaper = document.querySelector('.btn-paper');
 const btnScissors = document.querySelector('.btn-scissors');
 const buttons = document.querySelectorAll('button');
 
+let textDiv = document.createElement('div');
+let gameDiv = document.createElement('div');
+
 let playerSelection;
 let computerSelection;
 
@@ -17,11 +20,10 @@ if (playerScore <= 2 && computerScore <= 2) {
     btnRock.addEventListener('click', function () {
         let computerChoice = computerPlay();
         let result = playRound("rock", computerChoice);
-        let div = document.createElement('div');
-        div.textContent = result;
-        container.appendChild(div);
+        textDiv.textContent = result;
+        container.appendChild(textDiv);
 
-        let gameDiv = document.createElement('div');
+        
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
     })
@@ -29,11 +31,9 @@ if (playerScore <= 2 && computerScore <= 2) {
     btnPaper.addEventListener('click', function () {
         let computerChoice = computerPlay();
         const result = playRound('paper', computerChoice);
-        const div = document.createElement('div');
-        div.textContent = result;
-        container.appendChild(div);
+        textDiv.textContent = result;
+        container.appendChild(textDiv);
 
-        let gameDiv = document.createElement('div');
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
     })
@@ -41,11 +41,9 @@ if (playerScore <= 2 && computerScore <= 2) {
     btnScissors.addEventListener('click', function () {
         let computerChoice = computerPlay();
         const result = playRound('scissors', computerChoice);
-        const div = document.createElement('div');
-        div.textContent = result;
-        container.appendChild(div);
+        textDiv.textContent = result;
+        container.appendChild(textDiv);
 
-        const gameDiv = document.createElement('div');
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
     })
