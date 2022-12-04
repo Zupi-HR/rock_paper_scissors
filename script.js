@@ -4,42 +4,55 @@ const btnPaper = document.querySelector('.btn-paper');
 const btnScissors = document.querySelector('.btn-scissors');
 const buttons = document.querySelectorAll('button');
 
+let playerSelection;
+let computerSelection;
 
-btnRock.addEventListener('click', function () {
-    let computerChoice = computerPlay();
-    const result = playRound("rock", computerChoice);
-    const div = document.createElement('div');
-    div.textContent = result;
-    container.appendChild(div);
+let playerScore = 0;
+let computerScore = 0;
 
-    const gameDiv = document.createElement('div');
-    gameDiv.textContent = game();
-    container.appendChild(gameDiv);
-})
 
-btnPaper.addEventListener('click', function () {
-    let computerChoice = computerPlay();
-    const result = playRound('paper', computerChoice);
-    const div = document.createElement('div');
-    div.textContent = result;
-    container.appendChild(div);
 
-    const gameDiv = document.createElement('div');
-    gameDiv.textContent = game();
-    container.appendChild(gameDiv);
-})
 
-btnScissors.addEventListener('click', function () {
-    let computerChoice = computerPlay();
-    const result = playRound('scissors', computerChoice);
-    const div = document.createElement('div');
-    div.textContent = result;
-    container.appendChild(div);
+if (playerScore <= 2 && computerScore <= 2) {
+    btnRock.addEventListener('click', function () {
+        let computerChoice = computerPlay();
+        let result = playRound("rock", computerChoice);
+        let div = document.createElement('div');
+        div.textContent = result;
+        container.appendChild(div);
 
-    const gameDiv = document.createElement('div');
-    gameDiv.textContent = game();
-    container.appendChild(gameDiv);
-})
+        let gameDiv = document.createElement('div');
+        gameDiv.textContent = game();
+        container.appendChild(gameDiv);
+    })
+
+    btnPaper.addEventListener('click', function () {
+        let computerChoice = computerPlay();
+        const result = playRound('paper', computerChoice);
+        const div = document.createElement('div');
+        div.textContent = result;
+        container.appendChild(div);
+
+        let gameDiv = document.createElement('div');
+        gameDiv.textContent = game();
+        container.appendChild(gameDiv);
+    })
+
+    btnScissors.addEventListener('click', function () {
+        let computerChoice = computerPlay();
+        const result = playRound('scissors', computerChoice);
+        const div = document.createElement('div');
+        div.textContent = result;
+        container.appendChild(div);
+
+        const gameDiv = document.createElement('div');
+        gameDiv.textContent = game();
+        container.appendChild(gameDiv);
+    })
+};
+
+
+
 
 function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3);
@@ -58,11 +71,8 @@ function computerPlay() {
     return computerChoice;
 }
 
-let playerSelection;
-let computerSelection;
 
-let playerScore = 0;
-let computerScore = 0;
+
 
 
 
