@@ -13,42 +13,46 @@ let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
+let gameIsFinished = false;
 
 
 
-if (playerScore <= 2 && computerScore <= 2) {
-    btnRock.addEventListener('click', function () {
+btnRock.addEventListener('click', function () {
+    checkWinner();
+    if (gameIsFinished === false) {
         let computerChoice = computerPlay();
         let result = playRound("rock", computerChoice);
         textDiv.textContent = result;
         container.appendChild(textDiv);
-
-        
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
-    })
+    } 
+    
+})
 
-    btnPaper.addEventListener('click', function () {
+btnPaper.addEventListener('click', function () {
+    checkWinner();
+    if (gameIsFinished === false) {
         let computerChoice = computerPlay();
-        const result = playRound('paper', computerChoice);
+        let result = playRound("paper", computerChoice);
         textDiv.textContent = result;
         container.appendChild(textDiv);
-
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
-    })
+    }
+})
 
-    btnScissors.addEventListener('click', function () {
+btnScissors.addEventListener('click', function () {
+    checkWinner();
+    if (gameIsFinished === false) {
         let computerChoice = computerPlay();
-        const result = playRound('scissors', computerChoice);
+        let result = playRound("scissors", computerChoice);
         textDiv.textContent = result;
         container.appendChild(textDiv);
-
         gameDiv.textContent = game();
         container.appendChild(gameDiv);
-    })
-};
-
+    }
+})
 
 
 
@@ -68,9 +72,6 @@ function computerPlay() {
     }
     return computerChoice;
 }
-
-
-
 
 
 
@@ -94,15 +95,22 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+    if (playerScore >= 5 || computerScore >= 5) {
+        if (playerScore > computerScore) {
+            return `Your score is: ${playerScore}, computer score is: ${computerScore}, so you win!`
+        } else if (computerScore > playerScore) {
+            return `Your score is: ${playerScore}, computer score is: ${computerScore}, so computer win!`;
 
-    if (playerScore > computerScore) {
-        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so you win!`
-    } else if (computerScore > playerScore) {
-        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so computer win!`;
+        } else {
+            return `Your score is: ${playerScore}, computer score is: ${computerScore}, so it's a draw!`;
+        }
     } else {
-        return `Your score is: ${playerScore}, computer score is: ${computerScore}, so it's a draw!`;
+        return (`Your score is: ${playerScore}, computer score is: ${computerScore}`);
     }
 }
 
-
-
+function checkWinner() {
+    if (playerScore >= 5 || computerScore >= 5) {
+        gameIsFinished = true;
+    }
+}
